@@ -1,0 +1,1093 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Dev Dadhich — Tech Graduate & PGDM Student specializing in Web Development, Business Analytics, and Digital Strategy." />
+  <meta name="keywords" content="web development, business analytics, digital strategy, portfolio, Dev Dadhich, tech graduate, PGDM student" />
+  <meta property="og:title" content="Dev Dadhich | Portfolio" />
+  <meta property="og:description" content="Tech + Management Student crafting solutions at the intersection of technology and business." />
+  <meta property="og:image" content="dev image.jpg" />
+  <meta property="og:url" content="https://yourdomain.com" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <title>Dev Dadhich | Portfolio</title>
+
+  <!-- Favicon -->
+  <link rel="icon" href="favicon.ico" type="image/x-icon" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <!-- Typed.js for Hero typing animation -->
+  <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+
+  <!-- AOS (Animate On Scroll) -->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+  <style>
+    :root {
+      --bg-primary: #ffffff;
+      --bg-secondary: #f8f9fa;
+      --text-primary: #111111;
+      --text-secondary: #444444;
+      --accent: #e11d48;
+      --accent-hover: #be123c;
+      --border: #e5e7eb;
+      --glass: rgba(255, 255, 255, 0.85);
+    }
+
+    [data-theme="dark"] {
+      --bg-primary: #000000;
+      --bg-secondary: #111111;
+      --text-primary: #ffffff;
+      --text-secondary: #cccccc;
+      --accent: #f43f5e;
+      --accent-hover: #e11d48;
+      --border: #333333;
+      --glass: rgba(17, 17, 17, 0.85);
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: var(--bg-primary);
+      color: var(--text-primary);
+      transition: background-color 0.6s ease, color 0.6s ease;
+      line-height: 1.7;
+    }
+    
+    /* Preloader */
+    #preloader {
+      position: fixed;
+      inset: 0;
+      background: var(--bg-primary);
+      z-index: 9999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: opacity 0.8s ease;
+    }
+    #preloader.fade-out {
+      opacity: 0;
+    }
+
+    ::-webkit-scrollbar {
+      width: 10px;
+    }
+    ::-webkit-scrollbar-track {
+      background: var(--bg-secondary);
+    }
+    ::-webkit-scrollbar-thumb {
+      background: var(--accent);
+      border-radius: 5px;
+    }
+
+    .navbar {
+      backdrop-filter: blur(20px);
+      background: var(--glass);
+      border-bottom: 1px solid var(--border);
+      transition: all 0.4s ease;
+    }
+    .navbar.scrolled {
+      padding: 1rem 0;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+    }
+
+    .nav-link {
+      position: relative;
+      font-weight: 600;
+      color: var(--text-secondary);
+      padding: 0.5rem 0;
+      transition: color 0.3s ease;
+    }
+    .nav-link:hover,
+    .nav-link.active {
+      color: var(--accent);
+    }
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: -6px;
+      left: 0;
+      width: 0;
+      height: 3px;
+      background: var(--accent);
+      transition: width 0.5s ease;
+      border-radius: 2px;
+    }
+    .nav-link:hover::after,
+    .nav-link.active::after {
+      width: 100%;
+    }
+
+    .glass-card {
+      background: var(--glass);
+      backdrop-filter: blur(32px);
+      -webkit-backdrop-filter: blur(32px);
+      border: 1px solid var(--border);
+      box-shadow: 0 15px 50px rgba(0, 0, 0, 0.08);
+      border-radius: 2rem;
+      transition: all 0.6s ease;
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: white;
+      font-weight: 700;
+      padding: 1rem 2.5rem;
+      border-radius: 999px;
+      transition: all 0.4s ease;
+      box-shadow: 0 10px 30px rgba(225, 29, 72, 0.3);
+      position: relative;
+      overflow: hidden;
+    }
+    .btn-primary:hover {
+      background: var(--accent-hover);
+      transform: translateY(-4px);
+      box-shadow: 0 20px 40px rgba(225, 29, 72, 0.4);
+    }
+    .btn-primary::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 0;
+      height: 0;
+      background: rgba(255, 255, 255, 0.3);
+      border-radius: 50%;
+      transform: translate(-50%, -50%);
+      transition: width 0.8s ease, height 0.8s ease;
+    }
+    .btn-primary:hover::before {
+      width: 300px;
+      height: 300px;
+    }
+
+    .btn-secondary {
+      border: 2px solid var(--accent);
+      color: var(--accent);
+      font-weight: 700;
+      padding: 1rem 2.5rem;
+      border-radius: 999px;
+      transition: all 0.4s ease;
+    }
+    .btn-secondary:hover {
+      background: var(--accent);
+      color: white;
+    }
+
+    .hero-image {
+      position: relative;
+      border-radius: 2rem;
+      overflow: hidden;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+    }
+    .hero-image::before {
+      content: '';
+      position: absolute;
+      inset: -15px;
+      background: linear-gradient(45deg, var(--accent), var(--accent-hover));
+      border-radius: 2.25rem;
+      filter: blur(40px);
+      opacity: 0.4;
+      z-index: -1;
+      transition: opacity 0.7s ease;
+    }
+    .hero-image:hover::before {
+      opacity: 0.6;
+    }
+
+    .section-title {
+      font-size: 4rem;
+      font-weight: 900;
+      color: var(--text-primary);
+      position: relative;
+      display: inline-block;
+    }
+    .section-title::after {
+      content: '';
+      position: absolute;
+      bottom: -12px;
+      left: 0;
+      width: 80px;
+      height: 5px;
+      background: var(--accent);
+      border-radius: 3px;
+    }
+
+    .project-card {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: all 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+    .project-card.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Project Modal - Updated for Video Support */
+    #project-modal {
+      background: rgba(0, 0, 0, 0.7);
+      backdrop-filter: blur(16px);
+    }
+    .modal-dialog {
+      background: var(--glass);
+      backdrop-filter: blur(32px);
+      border: 1px solid var(--border);
+      box-shadow: 0 30px 80px rgba(0, 0, 0, 0.3);
+      border-radius: 2rem;
+      transform: scale(0.9);
+      opacity: 0;
+      transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+    .modal-dialog.show {
+      transform: scale(1);
+      opacity: 1;
+    }
+    .modal-media {
+      width: 100%;
+      border-radius: 1.5rem;
+      overflow: hidden;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+      background: #000;
+      position: relative;
+    }
+    .modal-media.video-mode {
+      aspect-ratio: 16 / 9;
+    }
+    .modal-media img {
+      width: 100%;
+      height: auto;
+      object-fit: contain;
+      background: #111;
+    }
+    .modal-media video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    /* Insights Marquee */
+    .marquee-item {
+      flex: 0 0 600px;
+      margin-right: 2rem;
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      height: 320px;
+      display: flex;
+      overflow: hidden;
+    }
+    [data-theme="dark"] .marquee-item {
+      background: rgba(0, 0, 0, 0.3);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .marquee {
+      overflow: hidden;
+      position: relative;
+      width: 100%;
+    }
+    .marquee-track {
+      display: flex;
+      animation: marquee 45s linear infinite;
+    }
+    @keyframes marquee {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-100%); }
+    }
+
+    /* Elevated Educational Journey */
+    .journey-container {
+      position: relative;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 6rem 0;
+    }
+    .journey-progress-bg {
+      position: absolute;
+      top: 50%;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: rgba(255,255,255,0.2);
+      border-radius: 2px;
+      transform: translateY(-50%);
+    }
+    .journey-progress-fill {
+      position: absolute;
+      top: 50%;
+      left: 0;
+      height: 4px;
+      background: var(--accent);
+      border-radius: 2px;
+      transform: translateY(-50%);
+      width: 0;
+      transition: width 1.5s ease-out;
+    }
+    .journey-milestones {
+      display: flex;
+      justify-content: space-between;
+      position: relative;
+      z-index: 10;
+    }
+    .journey-milestone {
+      text-align: center;
+      flex: 1;
+      max-width: 200px;
+    }
+    .journey-icon-circle {
+      width: 80px;
+      height: 80px;
+      background: var(--accent);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 1.5rem;
+      box-shadow: 0 10px 30px rgba(225, 29, 72, 0.3);
+      transition: all 0.4s ease;
+    }
+    .journey-icon-circle i {
+      color: white;
+      width: 40px;
+      height: 40px;
+    }
+    .journey-milestone:hover .journey-icon-circle {
+      transform: scale(1.15);
+      box-shadow: 0 20px 50px rgba(225, 29, 72, 0.5);
+    }
+    .journey-year {
+      font-size: 0.9rem;
+      opacity: 0.7;
+      margin-bottom: 1rem;
+    }
+    .journey-title {
+      font-weight: 700;
+      font-size: 1.1rem;
+      margin-bottom: 0.5rem;
+    }
+    .journey-school {
+      font-size: 0.95rem;
+      opacity: 0.9;
+    }
+    .journey-achievement {
+      margin-top: 1rem;
+      padding: 1rem;
+      background: var(--glass);
+      border-radius: 1rem;
+      opacity: 0;
+      transform: translateY(10px);
+      transition: all 0.5s ease;
+      max-width: 220px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .journey-milestone:hover .journey-achievement {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .journey-current-badge {
+      position: absolute;
+      top: -10px;
+      right: -10px;
+      padding: 0.5rem 1rem;
+      background: var(--accent);
+      color: white;
+      border-radius: 999px;
+      font-size: 0.8rem;
+      font-weight: bold;
+      animation: breathe 3s ease-in-out infinite;
+    }
+    @keyframes breathe {
+      0%, 100% { box-shadow: 0 0 10px rgba(225, 29, 72, 0.6); }
+      50% { box-shadow: 0 0 30px rgba(225, 29, 72, 0.9); }
+    }
+
+    /* Mobile Vertical Fallback */
+    @media (max-width: 1024px) {
+      .journey-milestones {
+        flex-direction: column;
+        gap: 4rem;
+      }
+      .journey-progress-bg, .journey-progress-fill {
+        left: 50%;
+        top: 0;
+        bottom: 0;
+        width: 4px;
+        height: auto;
+        transform: translateX(-50%);
+      }
+      .journey-milestone {
+        display: flex;
+        align-items: center;
+        text-align: left;
+        max-width: none;
+      }
+      .journey-icon-circle {
+        margin: 0 2rem 0 0;
+        flex-shrink: 0;
+      }
+      .journey-content {
+        flex: 1;
+      }
+      .journey-year {
+        margin-bottom: 0.5rem;
+      }
+    }
+
+    /* Back to Top Button */
+    #back-to-top {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      width: 50px;
+      height: 50px;
+      background: var(--accent);
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 10px 30px rgba(225, 29, 72, 0.4);
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.4s ease;
+      z-index: 100;
+    }
+    #back-to-top.show {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    /* Accessibility: Focus Styles */
+    :focus-visible {
+      outline: 3px solid var(--accent);
+      outline-offset: 4px;
+      border-radius: 8px;
+    }
+
+    /* Resume Download Button */
+    .resume-btn {
+      position: relative;
+      width: 60px;
+      height: 60px;
+      background: var(--accent);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 10px 30px rgba(225, 29, 72, 0.3);
+      transition: all 0.4s ease;
+      overflow: hidden;
+    }
+    .resume-btn:hover {
+      width: 180px;
+      border-radius: 999px;
+      background: var(--accent-hover);
+    }
+    .resume-btn i {
+      color: white;
+      width: 28px;
+      height: 28px;
+      transition: opacity 0.3s ease;
+    }
+    .resume-btn:hover i {
+      opacity: 0.7;
+    }
+    .resume-btn span {
+      position: absolute;
+      color: white;
+      font-weight: 700;
+      opacity: 0;
+      white-space: nowrap;
+      transition: opacity 0.4s ease;
+    }
+    .resume-btn:hover span {
+      opacity: 1;
+    }
+  </style>
+</head>
+<body data-theme="light" class="relative min-h-screen">
+
+  <!-- Preloader -->
+  <div id="preloader">
+    <div class="text-5xl font-black tracking-tighter" style="color: var(--accent);">DD</div>
+  </div>
+
+  <!-- Navbar with Theme Toggle -->
+  <nav id="navbar" class="navbar fixed top-0 w-full z-40 py-6 transition-all duration-500">
+    <div class="max-w-7xl mx-auto px-8 flex justify-between items-center">
+      <div class="text-4xl font-black tracking-tighter" style="color: var(--accent);">DD</div>
+      <div class="flex items-center gap-12 text-lg">
+        <a href="#home" class="nav-link active">Home</a>
+        <a href="#about" class="nav-link">About</a>
+        <a href="#projects" class="nav-link">Projects</a>
+        <a href="#insights" class="nav-link">Insights</a>
+        <a href="#journey" class="nav-link">Journey</a>
+        <a href="#contact" class="nav-link">Contact</a>
+        <button id="theme-toggle" class="p-3 rounded-full bg-white dark:bg-gray-900 shadow-lg border border-gray-200 dark:border-gray-800" aria-label="Toggle theme">
+          <svg class="w-6 h-6 text-gray-900 dark:text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path id="sun-icon" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707-.707M6.343 17.657l-.707-.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path>
+            <path id="moon-icon" class="hidden" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section with Typing Animation -->
+  <section id="home" class="min-h-screen flex items-center justify-center px-8 pt-24" data-aos="fade-up">
+    <div class="max-w-7xl w-full grid md:grid-cols-2 gap-20 items-center">
+      <div class="space-y-12">
+        <p class="text-xl font-medium opacity-80">Hello, I'm</p>
+        <h1 class="text-7xl md:text-8xl lg:text-9xl font-black leading-none">
+          Dev<br />
+          <span style="color: var(--accent);">Dadhich</span>
+        </h1>
+        <p class="text-2xl md:text-3xl font-light max-w-xl leading-relaxed text-var(--text-secondary)">
+          Tech + Management Student<br />
+          <span id="hero-quote" class="font-medium"></span>
+        </p>
+        <div class="flex gap-8">
+          <a href="#projects" class="btn-primary">View My Work</a>
+          <a href="#contact" class="btn-secondary">Get in Touch</a>
+        </div>
+      </div>
+
+      <div class="hero-image w-full max-w-lg mx-auto">
+        <img src="dev image.jpg" alt="Dev Dadhich" class="w-full h-full object-cover" loading="lazy" />
+      </div>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section id="about" class="py-40 px-8" style="background: var(--bg-secondary);" data-aos="fade-up">
+    <div class="max-w-7xl mx-auto">
+      <h2 class="section-title text-center mb-24">About Me</h2>
+      <div class="grid md:grid-cols-2 gap-20 items-start">
+        <div class="glass-card p-12">
+          <p class="text-xl leading-relaxed mb-8">
+           I’m a tech graduate with a growing interest in how technology, data, and strategy come together to solve real business problems. With experience in web development and interaction design, I enjoy building digital solutions that are both functional and user-focused.
+          </p>
+          <p class="text-xl leading-relaxed mb-8">
+            I’m inclined toward the MBA mindset of structured thinking and analytics, where insights guide decisions and ideas turn into scalable outcomes. My goal is to work at the intersection of business and technology, contributing to meaningful, tech-driven initiatives.
+          <p class="text-xl leading-relaxed mb-8">
+            I’m open to learning, collaborations, and conversations around analytics, web development, and tech-enabled problem solving.
+          </p>
+        </div>
+
+        <div>
+          <p class="text-2xl font-bold text-center mb-12">Tools & Technologies I Use</p>
+          <div class="grid grid-cols-4 gap-8 max-w-2xl mx-auto">
+            <img src="canva logo.webp" alt="Canva" class="w-20 h-20 object-contain mx-auto" loading="lazy" />
+            <img src="https://cdn.worldvectorlogo.com/logos/microsoft-excel-2013.svg" alt="Excel" class="w-20 h-20 object-contain mx-auto" loading="lazy" />
+            <img src="powerbi.png" alt="Power BI" class="w-20 h-20 object-contain mx-auto" loading="lazy" />
+            <img src="figma.png" alt="Figma" class="w-20 h-20 object-contain mx-auto" loading="lazy" />
+            <img src="ppt.png" alt="PowerPoint" class="w-20 h-20 object-contain mx-auto" loading="lazy" />
+            <img src="davinci.png" alt="DaVinci Resolve" class="w-20 h-20 object-contain mx-auto" loading="lazy" />
+            <img src="framer.png" alt="Framer" class="w-20 h-20 object-contain mx-auto" loading="lazy" />
+            <img src="html.png" alt="HTML" class="w-20 h-20 object-contain mx-auto" loading="lazy" />
+            <img src="https://cdn.worldvectorlogo.com/logos/css-3.svg" alt="CSS" class="w-20 h-20 object-contain mx-auto" loading="lazy" />
+            <img src="c++.png" alt="C++" class="w-20 h-20 object-contain mx-auto" loading="lazy" />
+            <img src="meta.avif" alt="Meta" class="w-20 h-20 object-contain mx-auto" loading="lazy" />
+            <img src="https://cdn.worldvectorlogo.com/logos/tailwind-css-2.svg" alt="Tailwind" class="w-20 h-20 object-contain mx-auto" loading="lazy" />
+            <img src="https://cdn.worldvectorlogo.com/logos/git-icon.svg" alt="Git" class="w-20 h-20 object-contain mx-auto" loading="lazy" />
+            <img src="vs.png" alt="VS Code" class="w-20 h-20 object-contain mx-auto" loading="lazy" />
+            <img src="https://cdn.worldvectorlogo.com/logos/python-5.svg" alt="Python" class="w-20 h-20 object-contain mx-auto" loading="lazy" />
+            <img src="sql.webp" alt="SQL" class="w-20 h-20 object-contain mx-auto" loading="lazy" />
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Projects Section - "Design" changed to "Video/Edits" -->
+  <section id="projects" class="py-40 px-8" data-aos="fade-up">
+    <div class="max-w-7xl mx-auto text-center mb-24">
+      <h2 class="section-title">Projects</h2>
+      <p class="text-2xl mt-10 max-w-3xl mx-auto text-var(--text-secondary)">Click a category to explore my work</p>
+    </div>
+
+    <div class="max-w-7xl mx-auto">
+      <div class="flex justify-center gap-8 mb-32 flex-wrap">
+        <button class="filter-btn px-10 py-5 rounded-full font-bold text-lg transition-all border-2 border-var(--accent) text-var(--accent)" data-filter="web">Web Development</button>
+        <button class="filter-btn px-10 py-5 rounded-full font-bold text-lg transition-all" data-filter="analytics">Analytics</button>
+        <button class="filter-btn px-10 py-5 rounded-full font-bold text-lg transition-all" data-filter="strategy">Strategy</button>
+        <button class="filter-btn px-10 py-5 rounded-full font-bold text-lg transition-all" data-filter="hrm">HRM</button>
+        <button class="filter-btn px-10 py-5 rounded-full font-bold text-lg transition-all" data-filter="marketing">Marketing</button>
+        <button class="filter-btn px-10 py-5 rounded-full font-bold text-lg transition-all" data-filter="video">Video/Edits</button>
+      </div>
+
+      <div id="projects-grid" class="grid md:grid-cols-3 gap-12"></div>
+    </div>
+  </section>
+
+  <!-- Insights Section -->
+  <section id="insights" class="py-40 px-8" style="background: var(--bg-secondary);" data-aos="fade-up">
+    <div class="max-w-7xl mx-auto text-center mb-16">
+      <h2 class="section-title">Insights & Featured Work</h2>
+    </div>
+
+    <div class="marquee">
+      <div id="marquee-track" class="marquee-track">
+        <!-- Dynamically populated -->
+      </div>
+    </div>
+  </section>
+
+  <!-- Journey Section -->
+  <section id="journey" class="py-40 px-8" data-aos="fade-up">
+    <div class="max-w-7xl mx-auto text-center mb-20">
+      <h2 class="section-title">Educational Journey</h2>
+    </div>
+
+    <div class="journey-container">
+      <div class="journey-progress-bg"></div>
+      <div class="journey-progress-fill" id="journey-progress"></div>
+
+      <div class="journey-milestones">
+        <div class="journey-milestone">
+          <div class="journey-year">Early Years</div>
+          <div class="journey-icon-circle">
+            <i data-lucide="baby"></i>
+          </div>
+          <div class="journey-content">
+            <p class="journey-title">Nursery – 3rd</p>
+            <p class="journey-school">KMD Public School, Jaipur</p>
+          </div>
+          <div class="journey-achievement">
+            Foundation in learning and curiosity
+          </div>
+        </div>
+
+        <div class="journey-milestone">
+          <div class="journey-year">Middle School</div>
+          <div class="journey-icon-circle">
+            <i data-lucide="book-open"></i>
+          </div>
+          <div class="journey-content">
+            <p class="journey-title">5th – 8th</p>
+            <p class="journey-school">Eden International School,<br>Rishabdeo, Udaipur</p>
+          </div>
+          <div class="journey-achievement">
+            Built strong academic base and discipline
+          </div>
+        </div>
+
+        <div class="journey-milestone">
+          <div class="journey-year">2018–2020</div>
+          <div class="journey-icon-circle">
+            <i data-lucide="flask-conical"></i>
+          </div>
+          <div class="journey-content">
+            <p class="journey-title">10th – 12th (PCB)</p>
+            <p class="journey-school">St Edmund's School, Jaipur</p>
+          </div>
+          <div class="journey-achievement">
+            Deep dive into science and critical thinking
+          </div>
+        </div>
+
+        <div class="journey-milestone">
+          <div class="journey-year">2022–2025</div>
+          <div class="journey-icon-circle">
+            <i data-lucide="laptop"></i>
+          </div>
+          <div class="journey-content">
+            <p class="journey-title">BCA</p>
+            <p class="journey-school">JECRC University</p>
+          </div>
+          <div class="journey-achievement">
+            Mastered programming and software development
+          </div>
+        </div>
+
+        <div class="journey-milestone">
+          <div class="journey-year">2025–Present</div>
+          <div class="relative">
+            <div class="journey-icon-circle">
+              <i data-lucide="graduation-cap"></i>
+            </div>
+            <div class="journey-current-badge">Current</div>
+          </div>
+          <div class="journey-content">
+            <p class="journey-title">PGDM</p>
+            <p class="journey-school">Narayana Business School</p>
+          </div>
+          <div class="journey-achievement">
+            Specializing in Business Analytics & Strategy
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section with Resume Download Button -->
+  <section id="contact" class="py-40 px-8" style="background: var(--bg-secondary);" data-aos="fade-up">
+    <div class="max-w-5xl mx-auto text-center">
+      <h2 class="section-title mb-12">Let's Connect</h2>
+      <p class="text-3xl mb-16 max-w-3xl mx-auto leading-relaxed">
+        Open to internships, collaborations, freelance projects, or just a conversation.
+      </p>
+      <div class="flex justify-center items-center gap-12 mb-20">
+        <a href="mailto:dev.dadhich@example.com" class="btn-primary text-xl px-16 py-6">Send Email</a>
+        <a href="https://linkedin.com/in/devdadhich" target="_blank" class="btn-secondary text-xl px-16 py-6">LinkedIn</a>
+        <!-- Resume Download Circular Button -->
+        <a href="resume.pdf" download class="resume-btn" aria-label="Download Resume">
+          <i data-lucide="download"></i>
+          <span>Download Resume</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer with Official Social Media Logos -->
+  <footer class="py-12 text-center border-t" style="border-color: var(--border);">
+    <p class="text-lg mb-8">© 2025 Dev Dadhich. All rights reserved.</p>
+    <div class="flex justify-center gap-10">
+      <!-- Twitter / X -->
+      <a href="https://x.com/hie_dev" class="w-8 h-8 opacity-70 hover:opacity-100 transition-opacity" aria-label="Twitter / X">
+        <img src="x.webp" alt="X (Twitter)" class="w-full h-full object-contain" loading="lazy" />
+      </a>
+      <!-- LinkedIn -->
+      <a href="https://linkedin.com/in/devdadhich" target="_blank" class="w-8 h-8 opacity-70 hover:opacity-100 transition-opacity" aria-label="LinkedIn">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/c/ca/LinkedIn_logo_initials.png" alt="LinkedIn" class="w-full h-full object-contain" loading="lazy" />
+      </a>
+      <!-- Instagram -->
+      <a href="https://www.instagram.com/hie.dev/" class="w-8 h-8 opacity-70 hover:opacity-100 transition-opacity" aria-label="Instagram">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/e/e7/Instagram_logo_2016.svg" alt="Instagram" class="w-full h-full object-contain" loading="lazy" />
+      </a>
+      <!-- GitHub -->
+      <a href="https://github.com/Devdadhich11" class="w-8 h-8 opacity-70 hover:opacity-100 transition-opacity" aria-label="GitHub">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/9/91/Octicons-mark-github.svg" alt="GitHub" class="w-full h-full object-contain" loading="lazy" />
+      </a>
+    </div>
+  </footer>
+
+  <!-- Back to Top Button -->
+  <button id="back-to-top" aria-label="Back to top">
+    <i data-lucide="arrow-up"></i>
+  </button>
+
+  <!-- Updated Project Modal with Video Support -->
+  <div id="project-modal" class="fixed inset-0 z-50 hidden flex items-center justify-center p-8" style="background: rgba(0,0,0,0.7); backdrop-filter: blur(16px);">
+    <div class="modal-dialog max-w-5xl w-full grid md:grid-cols-2 gap-12 p-12">
+      <div class="flex items-center justify-center">
+        <div id="modal-media-container" class="modal-media">
+          <!-- Dynamically filled with <img> or <video> -->
+        </div>
+      </div>
+
+      <div class="flex flex-col justify-center space-y-8">
+        <button id="close-project-modal" class="self-end text-4xl font-light hover:opacity-70">&times;</button>
+        <h3 id="modal-project-title" class="text-4xl font-black" style="color: var(--accent);"></h3>
+        <p id="modal-project-desc" class="text-xl leading-relaxed"></p>
+        <div class="flex gap-6">
+          <a id="modal-project-source" href="#" target="_blank" class="btn-secondary">Source / Report →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Initialize Lucide Icons
+    lucide.createIcons();
+
+    // Initialize AOS
+    AOS.init({ once: true, duration: 800 });
+
+    // Preloader
+    window.addEventListener('load', () => {
+      const preloader = document.getElementById('preloader');
+      preloader.classList.add('fade-out');
+      setTimeout(() => preloader.remove(), 800);
+    });
+
+    // Hero Typing Animation (with fallback)
+    try {
+      new Typed('#hero-quote', {
+        strings: ["Crafting solutions at the intersection of technology and business."],
+        typeSpeed: 50,
+        showCursor: false
+      });
+    } catch (e) {
+      document.getElementById('hero-quote').textContent = "Crafting solutions at the intersection of technology and business.";
+    }
+
+    // Theme Persistence + Toggle
+    const toggle = document.getElementById('theme-toggle');
+    const sun = document.getElementById('sun-icon');
+    const moon = document.getElementById('moon-icon');
+
+    const savedTheme = localStorage.getItem('theme') || 'light';
+    document.body.dataset.theme = savedTheme;
+    if (savedTheme === 'dark') {
+      sun.classList.add('hidden');
+      moon.classList.remove('hidden');
+    }
+
+    toggle.addEventListener('click', () => {
+      const isDark = document.body.dataset.theme === 'dark';
+      document.body.dataset.theme = isDark ? 'light' : 'dark';
+      localStorage.setItem('theme', document.body.dataset.theme);
+      sun.classList.toggle('hidden', !isDark);
+      moon.classList.toggle('hidden', isDark);
+    });
+
+    // Navbar Scroll
+    window.addEventListener('scroll', () => {
+      document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 80);
+      document.querySelectorAll('section[id]').forEach(section => {
+        const rect = section.getBoundingClientRect();
+        if (rect.top <= 150 && rect.bottom >= 150) {
+          document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
+          document.querySelector(`a[href="#${section.id}"]`)?.classList.add('active');
+        }
+      });
+    });
+
+    // Journey Progress Bar Animation
+    const progressFill = document.getElementById('journey-progress');
+    const journeySection = document.querySelector('#journey');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          progressFill.style.width = '100%';
+        }
+      });
+    }, { threshold: 0.5 });
+    observer.observe(journeySection);
+
+    // Back to Top Button
+    const backToTop = document.getElementById('back-to-top');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 500) {
+        backToTop.classList.add('show');
+      } else {
+        backToTop.classList.remove('show');
+      }
+    });
+    backToTop.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+
+    // Projects Data - Your original projects preserved + example video projects
+    const projects = [
+      { title: "Optimizing Construction Timelines through Parallel Activities", desc: "An operations management project focused on analyzing parallel activities at a construction site to identify the most efficient workflow. The study applied scheduling and routing techniques to determine the optimal sequence of tasks, minimize project duration, and improve overall time utilization while maintaining operational efficiency.", image: "ana1.png", source: "  ", category: "strategy" },
+      { title: "Job Satisfaction ", desc: "A job satisfaction study conducted , focusing on understanding employee motivation, workplace factors, and their impact on performance and retention. The project involved analyzing employee responses to identify key drivers of satisfaction and areas for improvement, demonstrating how HR insights can support better organizational decision-making.", image: "job.png", live: "https://drive.google.com/file/d/1HyQNZ-kYbbdDktxfJd-YrGi8RzbvQsKO/view?usp=sharing", category: "hrm" },
+      { title: "Funtions Of HR", desc: "A study on the core functions of Human Resources, undertaken as part of my HRM coursework, examining key areas such as recruitment, training, performance management, and employee relations. The project highlighted how effective HR practices align people strategy with organizational goals and improve overall workforce effectiveness.", image: "hr.png", live: "https://drive.google.com/file/d/1r4hAk4MgrSIivuxVDTHQK8zqvs-NqKAe/view?usp=sharing", category: "hrm" },
+      { title: "Building Brand Equity & Marketing Strategy: Vyndo", desc: "A strategic marketing project focused on building brand equity for Vyndo, analyzing brand positioning, target audience, and communication strategy. The study examined how consistent branding, product differentiation, and customer perception can strengthen market presence and support long-term brand growth.", image: "vyndo.png", live: "https://drive.google.com/file/d/1spQl7aLZZCwwH6mWW0EouADVeaUU2kVg/view?usp=sharing", source: "#", category: "marketing" },
+      { title: "Marketing Strategies in Unorganized Markets: A Ravivari Bazaar Study", desc: "A field-based study of marketing practices in the unorganized retail sector, with a focus on Ahmedabad’s Ravivari Bazaar. The project explored pricing tactics, customer engagement, location advantages, and informal promotion methods used by vendors, highlighting how traditional markets sustain demand and compete with organized retail through trust, affordability, and adaptability.", image: "unrecognised.png", live: "https://drive.google.com/file/d/1Y5dEzqyxh8Ao3HK9DANXdjOgp2AwM8J9/view?usp=sharing", category: "marketing" },
+      { title: "Behavioral Nudges Of Goibibo", desc: "A behavioral economics case study exploring why users abandon bookings on Goibibo. The project analyzes key psychological barriers across the search and checkout journey—such as choice overload, anchoring, loss aversion, and present bias—and proposes ethical nudges like smart recommendations and price transparency to reduce friction. It highlights how behavioral insights can improve conversions while maintaining user trust.", image: "Analytics/Economics/nudges.png", live: "https://drive.google.com/file/d/1ZmAZb_JLElGLlNy5I9NfsptMthuEGzPf/view?usp=drive_link", source: "https://www.linkedin.com/posts/devdadhich_behavioraleconomics-goibibo-traveltech-activity-7408098017083478016-90wS?utm_source=social_share_send&utm_medium=member_desktop_web&rcm=ACoAACw0H58B3lBd0NWvmp-sU0b7W-QxfmVSW3c", category: "analytics" },
+      { title: "Retail Economics & Consumer Behavior: A Tea Post Study ", desc: "A study on retail economics in the Indian market, with reference to Tea Post, focusing on demand forecasting, pricing strategies, and consumer behavior. The project examined how data-driven insights and customer preferences influence pricing decisions and sales performance, highlighting practical applications of economic concepts in a real-world retail context.", image: "tea.png", live: "https://drive.google.com/file/d/1MJkFgBRvIX_ZnzaiM-wsYh4sscMqae2x/view?usp=sharing", source: "#", category: "analytics" },
+      { title: "Difference In The Reporting standards 'US-GAAP Vs IFRS'", desc: "A comparative study on US-GAAP vs IFRS reporting standards, using BP as the reference company, to understand how differences in accounting frameworks impact financial reporting and interpretation. The project focused on variations in revenue recognition, asset valuation, and disclosure practices, highlighting how reporting standards influence comparability, transparency, and decision-making for global stakeholders.", image: "usgaap.png", live: "https://drive.google.com/file/d/1bS5i_EY503FnvQcQJ6_Q1o6Te2HNCkM-/view?usp=sharing", source: "#", category: "analytics" },
+      { title: "CapeX Analysis Of Finolex Cables Limited & KEI Industries Limited", desc: "A comparative CAPEX analysis of Finolex Cables Ltd. and KEI Industries Ltd., examining how each company allocates capital toward growth, expansion, and operational efficiency. The study evaluated investment trends, financial implications, and strategic priorities to understand how capital expenditures influence performance and long-term value creation in the cables and infrastructure sector.", image: "capex.png", live: "https://drive.google.com/file/d/1l5Xsu7KhZKymVLf0NUZeVkKQUXQOYatH/view?usp=sharing", category: "analytics" },
+      { title: "Drishti – Stories in Every Frame", desc: "A brand website project for Drishti, a creative production house focused on visual storytelling. The project highlights the studio’s vision, services, and narrative-driven approach, showcasing how thoughtful visuals, editing, and direction come together to transform ideas into impactful stories.", image: "drishti.png", source: "https://devdadhich11.github.io/Drishti/", category: "web" },
+      { title: "Pink City Parichay – Jaipur Through Stories & Streets", desc: "A pink-themed tourism website designed to showcase Jaipur’s history, attractions, culture, and city map in an engaging and visually rich format. The project blends storytelling with intuitive navigation to help users explore the Pink City through heritage, landmarks, and experiences, making tourism information both informative and immersive.", image: "pinkcity.png", source: "https://devdadhich11.github.io/pinkcity-parichay/index.html", category: "web" },
+      { title: "Frames of Friendship – Udaipur Trip Film", 
+    desc: "A travel video shoot and editing project documenting a group trip to Udaipur, capturing candid moments, landscapes, and shared experiences. The project focused on storytelling through dynamic visuals and rhythmic edits, turning a casual trip into a visually engaging travel narrative suited for social media and personal archives.", 
+    image: "udz.png", 
+    video: "travel1.mp4", 
+    category: "video" ,
+    source: " https://drive.google.com/file/d/1NKOtrL-Win1tsTwvPHkRqs1ADopwd62R/view?usp=drive_link"
+  },
+      { title: "Revved Frames – The Car Event Experience", 
+    desc: "A dynamic video shooting and editing project covering a live car event, focused on capturing motion, detailing, and crowd energy. The project highlights cinematic shots, smooth edits, and visual storytelling to bring the excitement of the event to life for digital and social media platforms." ,
+    image: "cars.png",
+    video: "cars.mp4", 
+    category: "video",
+    source: " https://drive.google.com/file/d/1e9WwE479Oel4rS4R1qEaDuuYETTJC_Wc/view?usp=sharing" ,
+  },
+  
+  { title: "News in Frames – Balochistan Train Attack Explainer", 
+    desc: "A video editing and shoot project created for an Instagram news page, focused on presenting clear, concise information about the Balochistan train attack. The project emphasized factual storytelling through structured visuals, text overlays, and clean edits to make complex news updates easy to understand and suitable for fast-paced social media consumption.", 
+    image: "baloch.png", 
+    video: "info2.mp4", 
+    category: "video" , 
+    source: "https://drive.google.com/file/d/1W9dGvjEn8N79Cw5tK833TxEwUYwLRo_h/view?usp=sharing "
+  },
+  { title: "Frames from Kashmir – A Travel Visual Story", 
+    desc: "A travel video shoot and editing project documenting a group trip to Kashmir, focused on landscapes, candid moments, and shared experiences. The project combined cinematic shots with dynamic edits to capture the emotion, scale, and atmosphere of the journey, crafted for engaging digital and social media storytelling.", 
+    image: "kashmir.png", 
+    video: "travel2.mp4", 
+    category: "video" ,
+    source: " https://drive.google.com/file/d/1Vz129MeblhPccwvnlOwRH3vt01a9g4ok/view?usp=sharing"
+  },
+  { title: "Urban Glow – Mall Aesthetic Shoot", 
+    desc: "A video shoot and editing project created for a personal Instagram profile, set in a shopping complex/mall environment. The project focused on capturing modern aesthetics, natural movement, and lifestyle moments, with smooth transitions and polished edits designed for engaging, platform-ready social media content.", 
+    image: "mall.png", 
+    video: "cin2.mp4", 
+    category: "video" ,
+    source : "https://drive.google.com/file/d/1D0SM9u15pU-CHD8SqmaYfzcQcxttf8vq/view?usp=sharing"
+  },
+  { title: "Cosmic Bytes – Astro Talk Reels", 
+    desc: "A video shooting and editing project for an Instagram page focused on astrology and Astro Talk–style content. The project involved creating visually engaging reels using clean edits, text overlays, and rhythmic transitions to simplify astrological insights and make them appealing, relatable, and easy to consume on social media.", 
+    image: "astro.png", 
+    video: "info1.mp4", 
+    category: "video" ,
+    source : "https://drive.google.com/file/d/1IsYBlBHjR_Dn9KFbBPqXlwJ0j31iuIcH/view?usp=drive_link"
+  },
+  
+];
+
+    let currentCategory = null;
+
+    function renderProjects(filter) {
+      const grid = document.getElementById('projects-grid');
+      grid.innerHTML = '';
+      currentCategory = filter;
+
+      if (!filter) return;
+
+      const filtered = projects.filter(p => p.category === filter);
+      filtered.forEach((p, i) => {
+        const card = document.createElement('div');
+        card.className = 'glass-card rounded-3xl overflow-hidden cursor-pointer project-card';
+
+        card.innerHTML = `
+          <div class="relative h-96 overflow-hidden group">
+            <img src="${p.image || 'https://via.placeholder.com/600x600?text=Video+Project'}" alt="${p.title}" loading="lazy"
+                 class="w-full h-full object-cover transition-all duration-700 
+                        group-hover:scale-110 grayscale group-hover:grayscale-0 
+                        brightness-75 group-hover:brightness-100" />
+
+            <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent"></div>
+
+            <div class="absolute inset-0 border-4 border-transparent 
+                          group-hover:border-[var(--accent)] 
+                          rounded-3xl transition-all duration-700 
+                          pointer-events-none opacity-0 group-hover:opacity-100 
+                          shadow-2xl shadow-[var(--accent)]/30"></div>
+
+            <div class="absolute bottom-0 left-0 right-0 p-8 text-white 
+                        transform translate-y-12 group-hover:translate-y-0 
+                        transition-transform duration-700 ease-out">
+              <span class="inline-block px-4 py-1 rounded-full text-xs font-bold mb-4 
+                           opacity-80" 
+                    style="background: rgba(225, 29, 72, 0.3);">
+                ${p.category.toUpperCase()}
+              </span>
+              
+              <h3 class="text-3xl font-black mb-3 
+                         opacity-70 group-hover:opacity-100 
+                         transition-opacity duration-500 
+                         group-hover:text-[var(--accent)]">
+                ${p.title}
+              </h3>
+              
+              <p class="text-sm opacity-0 group-hover:opacity-100 
+                        transition-opacity duration-700 delay-200">
+                Click to view case study →
+              </p>
+            </div>
+          </div>
+        `;
+        card.addEventListener('click', () => openProjectModal(p));
+        grid.appendChild(card);
+      });
+
+      setTimeout(() => {
+        document.querySelectorAll('.project-card').forEach(c => c.classList.add('visible'));
+      }, 100);
+    }
+
+    function openProjectModal(project) {
+      document.getElementById('modal-project-title').textContent = project.title;
+      document.getElementById('modal-project-desc').textContent = project.desc;
+      document.getElementById('modal-project-source').href = project.source || project.live || '#';
+
+      const mediaContainer = document.getElementById('modal-media-container');
+      mediaContainer.innerHTML = '';
+      mediaContainer.classList.remove('video-mode'); // Reset
+
+      if (project.video) {
+        mediaContainer.classList.add('video-mode');
+        const video = document.createElement('video');
+        video.src = project.video;
+        video.controls = true;
+        video.preload = "metadata";
+        video.playsInline = true;
+        mediaContainer.appendChild(video);
+      } else {
+        const img = document.createElement('img');
+        img.src = project.image;
+        img.alt = project.title;
+        img.loading = "lazy";
+        mediaContainer.appendChild(img);
+      }
+
+      const modal = document.getElementById('project-modal');
+      modal.classList.remove('hidden');
+      setTimeout(() => modal.querySelector('.modal-dialog').classList.add('show'), 10);
+    }
+
+    document.getElementById('close-project-modal').addEventListener('click', () => {
+      const modal = document.getElementById('project-modal');
+      modal.querySelector('.modal-dialog').classList.remove('show');
+      setTimeout(() => modal.classList.add('hidden'), 500);
+    });
+
+    document.getElementById('project-modal').addEventListener('click', (e) => {
+      if (e.target.id === 'project-modal') {
+        document.getElementById('close-project-modal').click();
+      }
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        document.getElementById('close-project-modal')?.click();
+      }
+    });
+
+    document.querySelectorAll('.filter-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.filter-btn').forEach(b => {
+          b.style.background = 'transparent';
+          b.style.color = 'var(--accent)';
+          b.style.border = '2px solid var(--accent)';
+        });
+        btn.style.background = 'var(--accent)';
+        btn.style.color = 'white';
+        btn.style.border = 'none';
+        renderProjects(btn.dataset.filter);
+      });
+    });
+
+    renderProjects(null);
+
+    // Dynamically populate Insights marquee with random projects
+    function populateInsights() {
+      const track = document.getElementById('marquee-track');
+      track.innerHTML = ''; // Clear static content
+
+      // Shuffle projects and take first 5 (or adjust number)
+      const shuffled = [...projects].sort(() => 0.5 - Math.random()).slice(0, 5);
+
+      shuffled.forEach(project => {
+        const item = document.createElement('div');
+        item.className = 'marquee-item';
+        item.innerHTML = `
+          <img src="${project.image}" alt="${project.title}" class="w-1/2 h-full object-cover" loading="lazy" />
+          <div class="w-1/2 p-10 flex flex-col justify-center">
+            <h3 class="text-2xl font-bold mb-4">${project.title}</h3>
+            <p class="text-base">${project.desc.substring(0, 100)}...</p> <!-- Shortened desc -->
+          </div>
+        `;
+        track.appendChild(item);
+      });
+    }
+
+    // Call it after page load
+    window.addEventListener('load', populateInsights);
+  </script>
+</body>
+</html>
